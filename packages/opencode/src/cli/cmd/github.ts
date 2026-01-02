@@ -318,7 +318,7 @@ export const GithubInstallCommand = cmd({
             if (installation) return s.stop("GitHub app already installed")
 
             // Open browser
-            const url = "https://github.com/apps/opencode-agent"
+            const url = "https://github.com/apps/lynx-agent"
             const command =
               process.platform === "darwin"
                 ? `open "${url}"`
