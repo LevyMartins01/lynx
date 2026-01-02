@@ -211,7 +211,7 @@ function App() {
     if (route.data.type === "session") {
       const session = sync.session.get(route.data.sessionID)
       if (!session || SessionApi.isDefaultTitle(session.title)) {
-        renderer.setTerminalTitle("OpenCode")
+        renderer.setTerminalTitle("Lynx")
         return
       }
 
@@ -570,7 +570,7 @@ function App() {
     toast.show({
       variant: "success",
       title: "Update Complete",
-      message: `OpenCode updated to v${evt.properties.version}`,
+      message: `Lynx updated to v${evt.properties.version}`,
       duration: 5000,
     })
   })
@@ -579,7 +579,7 @@ function App() {
     toast.show({
       variant: "info",
       title: "Update Available",
-      message: `OpenCode v${evt.properties.version} is available. Run 'opencode upgrade' to update manually.`,
+      message: `Lynx v${evt.properties.version} is available. Run 'lynx upgrade' to update manually.`,
       duration: 10000,
     })
   })
