@@ -204,7 +204,7 @@ function App() {
     if (!terminalTitleEnabled() || Flag.LYNX_DISABLE_TERMINAL_TITLE) return
 
     if (route.data.type === "home") {
-      renderer.setTerminalTitle("OpenCode")
+      renderer.setTerminalTitle("Lynx")
       return
     }
 
