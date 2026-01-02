@@ -8,8 +8,8 @@ import { iife } from "@/util/iife"
 import { Flag } from "../flag/flag"
 
 declare global {
-  const OPENCODE_VERSION: string
-  const OPENCODE_CHANNEL: string
+  const LYNX_VERSION: string
+  const LYNX_CHANNEL: string
 }
 
 export namespace Installation {
@@ -169,8 +169,8 @@ export namespace Installation {
 
     if (detectedMethod === "brew") {
       const formula = await getBrewFormula()
-      if (formula === "opencode") {
-        return fetch("https://formulae.brew.sh/api/formula/lynx.json")
+      if (formula.includes("opencode")) {
+        return fetch("https://formulae.brew.sh/api/formula/opencode.json")
           .then((res) => {
             if (!res.ok) throw new Error(res.statusText)
             return res.json()

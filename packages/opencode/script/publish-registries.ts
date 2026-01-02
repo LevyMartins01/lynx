@@ -67,7 +67,7 @@ if (!Script.preview) {
     `  cd "opencode-\${pkgver}"`,
     `  bun install`,
     "  cd ./packages/opencode",
-    `  OPENCODE_CHANNEL=latest OPENCODE_VERSION=${pkgver} bun run ./script/build.ts --single`,
+    `  LYNX_CHANNEL=latest LYNX_VERSION=${pkgver} bun run ./script/build.ts --single`,
     "}",
     "",
     "package() {",

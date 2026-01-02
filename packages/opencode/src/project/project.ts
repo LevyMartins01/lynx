@@ -88,7 +88,7 @@ export namespace Project {
       return {
         id: "global",
         worktree: "/",
-        vcs: Info.shape.vcs.parse(Flag.OPENCODE_FAKE_VCS),
+        vcs: Info.shape.vcs.parse(Flag.LYNX_FAKE_VCS),
       }
     })
 
@@ -107,7 +107,7 @@ export namespace Project {
         await migrateFromGlobal(id, worktree)
       }
     }
-    if (Flag.OPENCODE_EXPERIMENTAL_ICON_DISCOVERY) discover(existing)
+    if (Flag.LYNX_EXPERIMENTAL_ICON_DISCOVERY) discover(existing)
     const result: Info = {
       ...existing,
       worktree,
