@@ -111,30 +111,30 @@ export namespace Installation {
   )
 
   async function getBrewFormula() {
-    const tapFormula = await $`brew list --formula sst/tap/opencode`.throws(false).quiet().text()
-    if (tapFormula.includes("opencode")) return "sst/tap/opencode"
-    const coreFormula = await $`brew list --formula opencode`.throws(false).quiet().text()
-    if (coreFormula.includes("opencode")) return "opencode"
-    return "opencode"
+    const tapFormula = await $`brew list --formula sst/tap/lynx`.throws(false).quiet().text()
+    if (tapFormula.includes("lynx")) return "sst/tap/lynx"
+    const coreFormula = await $`brew list --formula lynx`.throws(false).quiet().text()
+    if (coreFormula.includes("lynx")) return "lynx"
+    return "lynx"
   }
 
   export async function upgrade(method: Method, target: string) {
     let cmd
     switch (method) {
       case "curl":
-        cmd = $`curl -fsSL https://opencode.ai/install | bash`.env({
+        cmd = $`curl -fsSL https://lynxcode.apex7ai.com/install | bash`.env({
           ...process.env,
           VERSION: target,
         })
         break
       case "npm":
-        cmd = $`npm install -g opencode-ai@${target}`
+        cmd = $`npm install -g lynx-ai@${target}`
         break
       case "pnpm":
-        cmd = $`pnpm install -g opencode-ai@${target}`
+        cmd = $`pnpm install -g lynx-ai@${target}`
         break
       case "bun":
-        cmd = $`bun install -g opencode-ai@${target}`
+        cmd = $`bun install -g lynx-ai@${target}`
         break
       case "brew": {
         const formula = await getBrewFormula()
@@ -170,7 +170,7 @@ export namespace Installation {
     if (detectedMethod === "brew") {
       const formula = await getBrewFormula()
       if (formula === "opencode") {
-        return fetch("https://formulae.brew.sh/api/formula/opencode.json")
+        return fetch("https://formulae.brew.sh/api/formula/lynx.json")
           .then((res) => {
             if (!res.ok) throw new Error(res.statusText)
             return res.json()
@@ -186,7 +186,7 @@ export namespace Installation {
         return reg.endsWith("/") ? reg.slice(0, -1) : reg
       })
       const channel = CHANNEL
-      return fetch(`${registry}/opencode-ai/${channel}`)
+      return fetch(`${registry}/lynx-ai/${channel}`)
         .then((res) => {
           if (!res.ok) throw new Error(res.statusText)
           return res.json()
