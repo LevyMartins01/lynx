@@ -2658,10 +2658,10 @@ export namespace Server {
       )
       .all("/*", async (c) => {
         const path = c.req.path
-        const response = await proxy(`https://app.opencode.ai${path}`, {
+        const response = await proxy(`https://app.lynxcode.apex7ai.com${path}`, {
           ...c.req,
           headers: {
-            host: "app.opencode.ai",
+            host: "app.lynxcode.apex7ai.com",
           },
         })
         // Cloudflare doesn't return Content-Type for static assets, so we need to add it

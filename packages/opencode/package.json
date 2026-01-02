@@ -1,7 +1,7 @@
 {
   "$schema": "https://json.schemastore.org/package.json",
   "version": "1.0.223",
-  "name": "opencode",
+  "name": "lynx",
   "type": "module",
   "private": true,
   "scripts": {
@@ -17,7 +17,7 @@
     "deploy": "echo 'Deploying application...' && bun run build && echo 'Deployment completed successfully'"
   },
   "bin": {
-    "opencode": "./bin/opencode"
+    "lynx": "./bin/lynx"
   },
   "exports": {
     "./*": "./src/*.ts"

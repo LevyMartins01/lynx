@@ -81,7 +81,7 @@ export namespace Installation {
       },
       {
         name: "brew" as const,
-        command: () => $`brew list --formula opencode`.throws(false).quiet().text(),
+        command: () => $`brew list --formula lynx`.throws(false).quiet().text(),
       },
     ]
 
@@ -95,7 +95,7 @@ export namespace Installation {
 
     for (const check of checks) {
       const output = await check.command()
-      if (output.includes(check.name === "brew" ? "opencode" : "opencode-ai")) {
+      if (output.includes(check.name === "brew" ? "lynx" : "lynx-ai")) {
         return check.name
       }
     }
@@ -160,9 +160,9 @@ export namespace Installation {
       })
   }
 
-  export const VERSION = typeof OPENCODE_VERSION === "string" ? OPENCODE_VERSION : "local"
-  export const CHANNEL = typeof OPENCODE_CHANNEL === "string" ? OPENCODE_CHANNEL : "local"
-  export const USER_AGENT = `opencode/${CHANNEL}/${VERSION}/${Flag.OPENCODE_CLIENT}`
+  export const VERSION = typeof LYNX_VERSION === "string" ? LYNX_VERSION : "local"
+  export const CHANNEL = typeof LYNX_CHANNEL === "string" ? LYNX_CHANNEL : "local"
+  export const USER_AGENT = `lynx/${CHANNEL}/${VERSION}/${Flag.LYNX_CLIENT}`
 
   export async function latest(installMethod?: Method) {
     const detectedMethod = installMethod || (await method())

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 set -euo pipefail
-APP=opencode
+APP=lynx
 
 MUTED='\033[0;2m'
 RED='\033[0;31m'
@@ -143,7 +143,7 @@ else
     fi
 fi
 
-INSTALL_DIR=$HOME/.opencode/bin
+INSTALL_DIR=$HOME/.lynx/bin
 mkdir -p "$INSTALL_DIR"
 
 if [ -z "$requested_version" ]; then
@@ -293,8 +293,8 @@ download_with_progress() {
 }
 
 download_and_install() {
-    print_message info "\n${MUTED}Installing ${NC}opencode ${MUTED}version: ${NC}$specific_version"
-    local tmp_dir="${TMPDIR:-/tmp}/opencode_install_$$"
+    print_message info "\n${MUTED}Installing ${NC}lynx ${MUTED}version: ${NC}$specific_version"
+    local tmp_dir="${TMPDIR:-/tmp}/lynx_install_$$"
     mkdir -p "$tmp_dir"
     
     if [[ "$os" == "windows" ]] || ! [ -t 2 ] || ! download_with_progress "$url" "$tmp_dir/$filename"; then
@@ -308,8 +308,8 @@ download_and_install() {
         unzip -q "$tmp_dir/$filename" -d "$tmp_dir"
     fi
     
-    mv "$tmp_dir/opencode" "$INSTALL_DIR"
-    chmod 755 "${INSTALL_DIR}/opencode"
+    mv "$tmp_dir/lynx" "$INSTALL_DIR"
+    chmod 755 "${INSTALL_DIR}/lynx"
     rm -rf "$tmp_dir"
 }
 
@@ -408,12 +408,12 @@ echo -e "${MUTED}█░░█ █░░█ █▀▀▀ █░░█ ${NC}█░
 echo -e "${MUTED}▀▀▀▀ █▀▀▀ ▀▀▀▀ ▀  ▀ ${NC}▀▀▀▀ ▀▀▀▀ ▀▀▀▀ ▀▀▀▀"
 echo -e ""
 echo -e ""
-echo -e "${MUTED}OpenCode includes free models, to start:${NC}"
+echo -e "${MUTED}Lynx includes free models, to start:${NC}"
 echo -e ""
 echo -e "cd <project>  ${MUTED}# Open directory${NC}"
-echo -e "opencode      ${MUTED}# Run command${NC}"
+echo -e "lynx      ${MUTED}# Run command${NC}"
 echo -e ""
-echo -e "${MUTED}For more information visit ${NC}https://opencode.ai/docs"
+echo -e "${MUTED}For more information visit ${NC}https://lynxcode.apex7ai.com/docs"
 echo -e ""
 echo -e ""
 
