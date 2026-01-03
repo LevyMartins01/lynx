@@ -308,8 +308,18 @@ download_and_install() {
         unzip -q "$tmp_dir/$filename" -d "$tmp_dir"
     fi
     
-    mv "$tmp_dir/lynx" "$INSTALL_DIR"
-    chmod 755 "${INSTALL_DIR}/lynx"
+    # Handle extracting binary from bin/ directory if it exists (common in our build)
+    if [ -f "$tmp_dir/bin/lynx" ]; then
+        mv "$tmp_dir/bin/lynx" "$INSTALL_DIR/lynx"
+    elif [ -f "$tmp_dir/bin/lynx.exe" ]; then
+        mv "$tmp_dir/bin/lynx.exe" "$INSTALL_DIR/lynx.exe"
+    elif [ -f "$tmp_dir/lynx.exe" ]; then
+        mv "$tmp_dir/lynx.exe" "$INSTALL_DIR/lynx.exe"
+    else
+        mv "$tmp_dir/lynx" "$INSTALL_DIR/lynx"
+    fi
+
+    chmod 755 "$INSTALL_DIR/lynx"*
     rm -rf "$tmp_dir"
 }
 
